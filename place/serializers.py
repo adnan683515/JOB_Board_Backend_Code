@@ -5,21 +5,25 @@ from .models import Browse_cetagory,Place,organizationtype,work_type
 class BrowseCetagorySerializers(serializers.ModelSerializer):
     class Meta:
         model = Browse_cetagory
-        fields = "__all__"
+        fields = ['id','name','slug']
+        
+        read_only_fields=['slug']
             
 
 
 class PlaceSerializers(serializers.ModelSerializer):
     class Meta:
         model = Place
-        fields = "__all__"
+        fields = ['id','name','slug']
+        
+        read_only_fields=['slug']
             
             
             
 class OrganaigationSerializers(serializers.ModelSerializer):
     class Meta:
         model = organizationtype
-        fields = "__all__"
+        fields = ['id','name','slug']
             
             
 class WorkSerializers(serializers.ModelSerializer):

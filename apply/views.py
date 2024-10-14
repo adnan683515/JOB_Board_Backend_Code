@@ -13,21 +13,6 @@ from auth_app.models import register_model
 from rest_framework import status
 from django.http import Http404
 from auth_app.serializers import RegistrationSerializers
-# Create your views here.
-
-
-# def get_object(self, pk):
-#         try:
-#             return register_model.objects.get(pk=pk)
-#         except register_model.DoesNotExist:
-#             raise Http404
-
-#     def get(self, request, pk, format=None):
-#         user_obj = self.get_object(pk)
-#         print(user_obj,pk)
-#         serializer = RegistrationSerializers(user_obj)
-#         return Response(serializer.data)
-    
 
     
 
@@ -35,17 +20,13 @@ class ApplyViewSet(viewsets.ModelViewSet):
     # permission_classes =[IsAuthenticated]
     queryset = Apply.objects.all()
     serializer_class = ApplySerializers
-    
-    
+
     def get_queryset(self):
         queryset =  super().get_queryset()
         
-        
         job_id = self.request.query_params.get('job_id')
-        
         if job_id:
             queryset=Apply.objects.filter(job_id = job_id)
-            
             
         user_id = self.request.query_params.get('user_id')
         if user_id:
@@ -55,34 +36,18 @@ class ApplyViewSet(viewsets.ModelViewSet):
     
     
     
-class apply_view(APIView):
-    
-    def get(self, request, format=None):
-        apply_objs = Apply.objects.all()
-        serializer = ApplySerializers(apply_objs, many=True)
-        return Response(serializer.data)
-    
+
+
+
+######################
+from rest_framework import generics
+from .serializers import appy_serializer_new
+
+class ApplyCreateView(generics.CreateAPIView):
+    queryset = Apply.objects.all()
+    serializer_class = appy_serializer_new 
     
 
-    def post(self, request, format=None):
-        serializer = ApplySerializers(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    
-
-    
-    
-    # def get_queryset(self):
-    #     queryset = super().get_queryset()
-        
-    #     user_id = self.request.query_params.get('user_id')
-    #     if user_id:
-    #         return queryset.filter(user_id = user_id)
-        
-        
         
         
 class Edit_for_status_view(APIView):

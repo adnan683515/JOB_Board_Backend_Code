@@ -19,6 +19,9 @@ class contact_Model(models.Model):
     
 
 
+
+    
+
 class our_leaders(models.Model):
     name = models.CharField(max_length=100)
     title = models.CharField(max_length=40)
@@ -27,4 +30,9 @@ class our_leaders(models.Model):
     
     def __str__(self):
         return self.name
+    
+class commnet(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    our_leaders = models.ForeignKey(our_leaders,on_delete=models.CASCADE)
+    text = models.TextField()
     

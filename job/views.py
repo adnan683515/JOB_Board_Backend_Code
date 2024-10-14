@@ -38,7 +38,7 @@ class job_Viewset(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
     # pagination_class = pageinationView
     
-     
+    
     def get_queryset(self):
         queryset = super().get_queryset()
         

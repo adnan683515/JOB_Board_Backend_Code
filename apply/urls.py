@@ -11,7 +11,8 @@ urlpatterns = [
     # path('applylist/',views.apply_view.as_view()),
     
     path("applylistedit/<int:pk>/",views.Edit_for_status_view.as_view(),name="edit"),
-    path("deleteapply/<int:pk>/",views.delete_view_apply.as_view(),name="delete")
+    path("deleteapply/<int:pk>/",views.delete_view_apply.as_view(),name="delete"),
+    path('apply/', views.ApplyCreateView.as_view(), name='apply-create'),
     
     
 ]

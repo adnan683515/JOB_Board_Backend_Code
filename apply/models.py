@@ -16,9 +16,7 @@ class Apply(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='apply')
     job = models.ForeignKey(JOB,on_delete=models.CASCADE)
     
-    
-    
-    
+
     phone_number = models.CharField(max_length=13,null=True,blank=True)
     image = models.CharField(max_length=100,null=True,blank=True)
     status = models.CharField(choices=apply_status,null=True,blank=True,max_length=100)
@@ -30,12 +28,6 @@ class Apply(models.Model):
     office_location = models.CharField(max_length=100,null=True,blank=True)
     
 
-
-
-
-
-
-    
     education = models.CharField(max_length=200)
     facebookLink = models.CharField(max_length=200)
     resume =  models.CharField(max_length=100,null=True,blank=True)

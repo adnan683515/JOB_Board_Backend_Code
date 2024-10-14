@@ -97,18 +97,7 @@ class info_user_for_pk(APIView):
         return Response(serializer.data)
     
     
-        
-            
-        
-        
-    
 
-
-    
-    
-    
-
-    
     
 class LoginViews(APIView):
     
@@ -148,6 +137,8 @@ def activate(request,uidb64,token):
     
     else:
         return redirect('http://127.0.0.1:5500/html/register.html')
+    
+    
     
 class logoutView(APIView):
     
